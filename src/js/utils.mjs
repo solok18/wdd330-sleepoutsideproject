@@ -21,3 +21,27 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+
+// --- existing exports like getLocalStorage, setLocalStorage, blablabla stay as they are ---
+
+/**
+ * Reuse templates across pages.
+ * @param {Function} templateFn - (item) => string
+ * @param {Element} parentElement - DOM node to insert into
+ * @param {Array} list - items to render
+ * @param {InsertPosition} position 
+ * @param {Boolean} clear - true = clears parent first ---- default = false
+ */
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false
+) {
+  if (!parentElement) return;
+  if (clear) parentElement.innerHTML = "";
+  const htmlStrings = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}

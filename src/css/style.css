@@ -261,3 +261,28 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+
+/* Remove from Cart*/
+.cart-card {
+  position: relative; 
+  padding-right: 2rem; 
+}
+
+.remove-item {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #900;
+}
+
+.remove-item:hover {
+  color: #c00;
+  transform: scale(1.2);
+}
+
