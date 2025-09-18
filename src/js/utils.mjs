@@ -22,6 +22,12 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// API added part W03
+export function getParam(name) {
+  const params = new URLSearchParams(location.search);
+  return params.get(name);
+}
+
 
 // --- existing exports like getLocalStorage, setLocalStorage, blablabla stay as they are ---
 

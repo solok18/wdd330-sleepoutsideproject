@@ -1,12 +1,7 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 
-const dataSource = new ProductData("tents");
-
-function getProductIdFromQuery() {
-  const params = new URLSearchParams(location.search);
-  return params.get("product") || params.get("id");
-}
+const dataSource = new ProductData();
 
 function addProductToCart(product) {
   const cart = getLocalStorage("so-cart") || [];
@@ -15,13 +10,13 @@ function addProductToCart(product) {
 }
 
 function renderProduct(product) {
+  const imgUrl = product.Images?.PrimaryLarge || product.PrimaryLarge || product.Image;
   const img = document.getElementById("productImage");
-  img.src = product.Image;
+  img.src = imgUrl;
   img.alt = product.Name;
 
-  document.getElementById("productName").textContent = product.Name;
-  document.getElementById("productColor").textContent =
-    product.Colors?.[0]?.ColorName || "";
+  document.getElementById("productName").textContent = product.Name || "";
+  document.getElementById("productColor").textContent = product.Colors?.[0]?.ColorName ?? "";
   document.getElementById("productPrice").textContent = `$${product.FinalPrice}`;
 
   const btn = document.getElementById("addToCart");
@@ -30,7 +25,7 @@ function renderProduct(product) {
 }
 
 async function init() {
-  const id = getProductIdFromQuery();
+  const id = getParam("product") || getParam("id");
   if (!id) {
     document.getElementById("productName").textContent = "Product not found";
     return;

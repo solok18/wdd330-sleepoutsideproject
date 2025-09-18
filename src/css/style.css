@@ -263,7 +263,7 @@ footer {
 }
 
 
-/* Remove from Cart*/
+/* Remove from Cart */
 .cart-card {
   position: relative; 
   padding-right: 2rem; 
@@ -285,4 +285,12 @@ footer {
   color: #c00;
   transform: scale(1.2);
 }
+/* Remove from Cart */
 
+/* Under banner Icons */
+.category-grid { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 1rem; }
+.category-card { display: grid; place-items: center; padding: 1rem; border: 1px solid #ddd; border-radius: .75rem; background: #fff; text-decoration: none; color: inherit; }
+.category-card img { width: 72px; height: 72px; }
+.category-card span { margin-top: .5rem; font-weight: 600; }
+.category-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); transform: translateY(-2px); transition: .2s ease; }
+/* Under banner Icons */
