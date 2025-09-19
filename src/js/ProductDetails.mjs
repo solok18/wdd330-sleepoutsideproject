@@ -108,6 +108,11 @@
 
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
+// needed to added so that the header and footer could work dinamically
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
 export default class ProductDetails {
 
   constructor(productId, dataSource) {
