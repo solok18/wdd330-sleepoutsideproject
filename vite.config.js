@@ -24,6 +24,11 @@ export default defineConfig({
           __dirname,
           "src/product_pages/northface-talus-4.html",
         ),
+        //this is the addition for the product list index
+        product_listing: resolve(
+          __dirname,
+          "src/product_listing/index.html"
+        ),
       },
     },
   },
