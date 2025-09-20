@@ -51,3 +51,36 @@ export function renderListWithTemplate(
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  if (!parentElement) return;
+  parentElement.innerHTML = template;
+  if (typeof callback === "function") {
+    callback(parentElement, data);
+  }
+}
+
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  if (response.ok) {
+    return await response.text();
+  } else {
+    throw new Error(`Error loading ${path}: ${response.statusText}`);
+  }
+}
+
+// New function for a dynamic header/footer
+export async function loadHeaderFooter() {
+  const headerEl = document.getElementById("main-header");
+  const footerEl = document.getElementById("main-footer");
+
+  if (headerEl) {
+    const header = await loadTemplate("/partials/header.html");
+    renderWithTemplate(header, headerEl);
+  }
+
+  if (footerEl) {
+    const footer = await loadTemplate("/partials/footer.html");
+    renderWithTemplate(footer, footerEl);
+  }
+}

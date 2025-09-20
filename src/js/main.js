@@ -1,6 +1,8 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+loadHeaderFooter();
 
 // Data source for tents
 const dataSource = new ProductData("tents");

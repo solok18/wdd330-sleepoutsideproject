@@ -1,6 +1,8 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { getLocalStorage, setLocalStorage, getParam } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+loadHeaderFooter();
 
 const category = getParam("category") || "tents"; // default if missing
 

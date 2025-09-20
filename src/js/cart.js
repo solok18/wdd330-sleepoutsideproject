@@ -1,4 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+loadHeaderFooter();
 
 function normalizeCart(items) {
   if (Array.isArray(items)) return items;
