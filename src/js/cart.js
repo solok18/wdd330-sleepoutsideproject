@@ -1,5 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
 
 function normalizeCart(items) {
@@ -8,24 +7,40 @@ function normalizeCart(items) {
 }
 
 function renderCartContents() {
+  let cartItems = getLocalStorage("so-cart") || [];
+  cartItems = normalizeCart(cartItems);
+
   const listEl = document.querySelector(".product-list");
-  let cartItems = normalizeCart(getLocalStorage("so-cart"));
 
   if (!cartItems.length) {
     listEl.innerHTML = `<li class="cart-empty">Your cart is empty.</li>`;
+    document.querySelector(".cart-footer").classList.add("hide");
     return;
   }
 
   const htmlItems = cartItems.map((item, index) => cartItemTemplate(item, index));
   listEl.innerHTML = htmlItems.join("");
+
+  const footer = document.querySelector(".cart-footer");
+  footer.classList.remove("hide");
+
+  const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+  footer.querySelector(".cart-total").textContent = `Total: $${total.toFixed(2)}`;
 }
 
 function cartItemTemplate(item, index) {
+  const img =
+    item.Images?.PrimarySmall ||
+    item.Images?.PrimaryMedium ||
+    item.PrimaryMedium ||
+    item.Image ||
+    "/images/fallback.png";
+
   return `
 <li class="cart-card divider">
   <button class="remove-item" data-index="${index}" aria-label="Remove ${item.Name}" title="Remove">×</button>
   <a href="#" class="cart-card__image">
-    <img src="${item.Image}" alt="${item.Name}" />
+    <img src="${img}" alt="${item.Name}" />
   </a>
   <a href="#">
     <h2 class="card__name">${item.Name}</h2>
@@ -54,5 +69,6 @@ function bindRemoveHandler() {
   });
 }
 
+// init
 bindRemoveHandler();
 renderCartContents();

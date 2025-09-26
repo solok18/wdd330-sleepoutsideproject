@@ -1,26 +1,51 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Sleep Outside | Checkout</title>
-
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-
   <body>
-    <header id = "main-header" class="divider"></header>
+    <header id="main-header"></header>
 
     <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
+      <h1>Checkout</h1>
+      <form id="checkoutForm" class="checkout-form">
+        <label>
+          Full Name
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Address
+          <input type="text" name="address" required />
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          Credit Card
+          <input
+            type="text"
+            name="cc"
+            required
+            pattern="\d{16}"
+            placeholder="1234 5678 9012 3456"
+          />
+        </label>
+
+        <button id="checkoutSubmit" type="submit" class="btn-primary">
+          Place Order
+        </button>
+      </form>
     </main>
 
     <footer id="main-footer"></footer>
+
     <script type="module" src="../js/checkout.js"></script>
   </body>
 </html>
