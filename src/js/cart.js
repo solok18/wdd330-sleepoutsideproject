@@ -28,7 +28,7 @@ function renderCartContents() {
   footer.querySelector(".cart-total").textContent = `Total: $${total.toFixed(2)}`;
 }
 
-// Edited for new images
+// Edited for new images :D
 function cartItemTemplate(item, index) {
   const img =
     item.Images?.PrimarySmall ||
