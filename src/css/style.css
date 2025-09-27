@@ -270,20 +270,23 @@ footer {
 }
 
 .remove-item {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  background: #ef4444;
   border: none;
-  background: transparent;
-  font-size: 1.25rem;
-  line-height: 1;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
   cursor: pointer;
-  color: #900;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
 }
 
 .remove-item:hover {
-  color: #c00;
-  transform: scale(1.2);
+  background: #f0a868;
 }
 /* Remove from Cart */
 
@@ -372,3 +375,98 @@ a.button:hover {
   display: none;
 }
 /* Cart Total */
+
+/* Better Cart CSS */
+.product-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-card {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-card__image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-card h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.cart-card__color {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.cart-card__quantity label,
+.cart-card__price {
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.remove-item {
+  background: transparent;
+  border: none;
+  color: #c00;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.cart-footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 2px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-total {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.cart-footer .button {
+  background: #3b82f6;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s ease-in-out;
+}
+
+.cart-footer .button:hover {
+  background: #2563eb;
+}
+
+.cart-qty {
+  width: 60px;
+  padding: 0.3rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.cart-qty:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+/* Better Cart CSS */
+
