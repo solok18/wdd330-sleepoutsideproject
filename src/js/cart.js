@@ -57,8 +57,6 @@ function cartItemTemplate(item, index) {
 </li>`;
 }
 
-
-
 function bindRemoveHandler() {
   const listEl = document.querySelector(".product-list");
   listEl.addEventListener("click", (e) => {
