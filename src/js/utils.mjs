@@ -7,7 +7,7 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+  return JSON.parse(localStorage.getItem(key)) || []; // added || [] make sure that array still happening when there is no data, fall back to []
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -46,7 +46,7 @@ export function renderWithTemplate(template, parentElemet, data, callback) {
   }
 }
 
-async function loadTemplate(path) {
+export async function loadTemplate(path) {
   const res = await fetch(path);
   const template = await res.text();
   return template;
